@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <side-bar></side-bar>
+
+        <mat-progress-bar mode="indeterminate" value="40" *ngIf="loading"></mat-progress-bar>
+
+        <div class="container">
+            <div class="row">
+                <h2 class="mx-auto head">Price Tracker</h2>
+            </div>
+            <br>
+            <div class="row">
+
+                <mat-card class="full-width">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Product name" [(ngModel)]="name">
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput type='number' placeholder="Rate in Rupees" [(ngModel)]="rate"
+                                        [formControl]="rateControl">
+                                    <mat-error>Please enter greater than 0</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-3">
+                                <button mat-raised-button color='primary' (click)="checkRate()">Add Product</button>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row" *ngIf="USD">
+                            <div class="col-md-3">
+                                USD:
+                               <p class="indigo-pink"> {{USD}}</p>
+                            </div>
+
+                            <div class="col-md-3">
+                                GBP:
+                               <p class="indigo-pink"> {{GBP}}</p>
+                            </div>
+
+                            <div class="col-md-3">
+                                MXN:
+                               <p class="indigo-pink"> {{MXN}}</p>
+                            </div>
+
+                            <div class="col-md-3">
+                                AED:
+                               <p class="indigo-pink"> {{AED}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card>
+
+                <br>
+
+                <!-- <mat-card class="graph-card mat-card-pink">
+                        <canvas id="canvas">{{ chart }}</canvas>
+                </mat-card> -->
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

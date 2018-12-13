@@ -1,0 +1,81 @@
+<side-bar></side-bar>
+
+<div class="container">
+
+    <div class="row">
+        <h2 class="mx-auto head">Historical Prices</h2>
+    </div>
+
+    <mat-card class="full-width">
+        <div class="row">
+
+            <div class="col-md-6">
+                <p>Select the name of the Product</p>
+            </div>
+
+            <div class="col-md-3" *ngIf='names'>
+                <mat-form-field>
+                    <mat-select placeholder="Products" [(ngModel)]="select">
+                        <mat-option *ngFor="let name of names" [value]="name">
+                            {{name.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3" *ngIf='names'>
+
+                <button mat-raised-button color='primary' (click)="checkRate()">Check Rates</button>
+            </div>
+
+        </div>
+
+    </mat-card>
+
+    <div class="row" *ngIf='rate'>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">USD</th>
+                    <th scope="col">GBP</th>
+                    <th scope="col">MXN</th>
+                    <th scope="col">AED</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>0.1</td>
+                    <td>0.2</td>
+                    <td>1.5</td>
+                    <td>1.2</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>0.01</td>
+                    <td>0.3</td>
+                    <td>1.2</td>
+                    <td>1.1</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>0.01</td>
+                    <td>0.3</td>
+                    <td>1.2</td>
+                    <td>1.1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <div class="row" [hidden]="!rate">
+        <mat-card class="full-width">
+            <canvas id="canvas">{{ chart }}</canvas>
+        </mat-card>
+    </div>
+    <br>
+    <br>
+</div>
